@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Fitness Coach{% endblock %}
+{% block content %}
+<section id="activities">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 mx-auto text-center mb-4">
+                <h5 class="fw-light fs-3 fs-lg-5 lh-sm mb-3">Activities</h5>
+                <p class="mb-5">We go beyond traditional fitness services, offering a holistic approach to help you
+                    achieve
+                    lasting results. Discover a personalized fitness experience that caters to your individual needs and
+                    empowers
+                    you to transform your lifestyle.</p>
+                <!-- Button to open the "Create Activity" modal -->
+                <div class="container mt-5">
+                    <p>User BMI: {{ user_bmi }}</p>
+
+                    <h2 class="mb-4">Weekly Goal</h2>
+                    <!-- Progress bar -->
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: {{ calories_goal_progress }}%;"
+                            aria-valuenow="{{ calories_goal_progress }}" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </div>
+
+                    <p class="mt-2">Progress: {{ weekly_calories }} calories out of {{ user_goal }} calories</p>
+
+                    <!-- Button to open the "Create Activity" modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#addActivityModal">
+                        Add Activity
+                    </button>
+
+                    <!-- Modal for "Create Activity" form -->
+                    <div class="modal fade" id="addActivityModal" tabindex="-1" aria-labelledby="addActivityModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addActivityModalLabel">Create Activity</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="{% url 'create_activity' %}">
+                                        {% csrf_token %}
+                                        {{ activity_form.as_p }}
+                                        <button type="submit" class="btn btn-primary">Create</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="dietplan">
+    <div class="container mt-4">
+        <div class="scrolling-container">
+            <div class="row">
+                <h5 class="fw-light fs-3 fs-lg-5 lh-sm mb-3">Diet Plan</h5>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for diet_plan in diet_plans %}
+                <div class="col">
+                    <div class="card h-100 shadow px-4 px-md-2 px-lg-3 card-span pt-4">
+                        <h5 class="card-title">{{ diet_plan.name }}</h5>
+                        <p class="card-text">Preparation Time : {{ diet_plan.preparation_time }}</p>
+                        <img src="{% static 'images/' %}{{ diet_plan.image_name }}" class="card-img-top"
+                            alt="{{ card_data.name }}">
+                        <div class="card-body">
+                            <ul class="nav nav-tabs" id="myTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="ingredients-tab" data-bs-toggle="tab"
+                                        href="#ingredients-{{ forloop.counter }}" role="tab" aria-controls="ingredients"
+                                        aria-selected="true">Ingredients</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="guidelines-tab" data-bs-toggle="tab"
+                                        href="#guidelines-{{ forloop.counter }}" role="tab" aria-controls="guidelines"
+                                        aria-selected="false">Preparation</a>
+                                </li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content mt-2">
+                                <div class="tab-pane fade show active" id="ingredients-{{ forloop.counter }}"
+                                    role="tabpanel" aria-labelledby="ingredients-tab">
+                                    <!-- Ingredients content goes here -->
+                                    {{ diet_plan.ingredients }}
+                                    <p class="card-text">Carbohydrate : {{ diet_plan.carbohydrate }}</p>
+                                    <p class="card-text">Protein : {{ diet_plan.protein }}</p>
+                                    <p class="card-text">Fat : {{ diet_plan.fat }}</p>
+                                    <p class="card-text">Energy : {{ diet_plan.energy }}</p>
+                                </div>
+                                <div class="tab-pane fade" id="guidelines-{{ forloop.counter }}" role="tabpanel"
+                                    aria-labelledby="guidelines-tab">
+                                    <!-- Guidelines content goes here -->
+                                    {{ diet_plan.guide }}
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <small class="text-muted">Recommend for BMI range: {{ diet_plan.bmi_from }} to {{
+                                    diet_plan.bmi_to }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="training-program">
+    <div class="container mt-4">
+        <div class="row">
+            <h5 class="fw-light fs-3 fs-lg-5 lh-sm mb-3">Training Program</h5>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for activity_program in activity_programs %}
+            <div class="col">
+                <div class="card h-100 shadow px-4 px-md-2 px-lg-3 card-span pt-4">
+                    <img src="{% static 'images/' %}{{ activity_program.image_name }}" class="card-img-top"
+                        alt="{{ activity_program.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ activity_program.name }}</h5>
+                        <p class="card-text">{{ activity_program.description }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Recommend for BMI range: {{ activity_program.bmi_from }} to {{
+                            activity_program.bmi_to }}</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="report">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 mx-auto text-center mb-4">
+                <h5 class="fw-light fs-3 fs-lg-5 lh-sm mb-3">Reports</h5>
+                <p class="mb-5">We go beyond traditional fitness services, offering a holistic approach to help you
+                    achieve
+                    lasting results. Discover a personalized fitness experience that caters to your individual needs and
+                    empowers
+                    you to transform your lifestyle.</p>
+                <canvas id="monthlyReport">
+
+                </canvas>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+{{ monthly_report|json_script:"monthly-report-data" }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const monthlyReportCtx = document.getElementById('monthlyReport');
+    const monthlyReportData = JSON.parse(document.getElementById('monthly-report-data').textContent);
+
+    new Chart(monthlyReportCtx, {
+        type: 'bar',
+        data: monthlyReportData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

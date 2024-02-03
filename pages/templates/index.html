@@ -1,0 +1,488 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Fitness Coach{% endblock %}
+
+{% block content %}
+<section class="py-0" id="home">
+  <div class="bg-holder d-none d-md-block" style="background-image:url('{% static 'images/bg_01.jpg' %}');background-position:right bottom;background-size:contain;margin-top:5.625rem;">
+  </div>
+  <!--/.bg-holder-->
+
+  <div class="bg-holder d-block d-md-none" style="background-image:url('{% static 'images/bg_01.jpg' %}');background-position:right top;background-size:contain;margin-top:5.625rem;">
+  </div>
+  <!--/.bg-holder-->
+  <div class="container">
+    <div class="row align-items-center min-vh-md-75 mt-7">
+      <div class="col-md-7 col-lg-6 py-6 text-sm-start text-center">
+        <h1 class="mt-6 mb-sm-4 display-4 fw-light lh-sm fs-4 fs-lg-6 fs-xxl-7">Where <span
+            class="text-primary">Fitness</span><br class="d-block d-lg-none d-xl-block" />Become Your Life-Style </h1>
+        <p class="mb-5 fs-1 lh-lg">if you're ready to make an investment into your health, simply book a no-obligatory
+          consultation with us by clicking below..</p>
+        <a class="btn btn-lg btn-primary hover-top btn-glow" href="{% url 'account_signup' %}">Join Now
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-100 py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mx-auto align-items-center text-center">
+        <div class="carousel slide" id="carouselExampleDark" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <div class="row h-100 justify-content-center">
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_1.jpg' %}" alt="universities" style="height: 200px;" /></div>
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_2.jpg' %}" alt="universities" style="height: 200px;" /></div>
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_3.jpg' %}" alt="universities" style="height: 200px;" /></div>
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_4.jpg' %}" alt="universities" style="height: 200px;" /></div>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <div class="row h-100 justify-content-center">
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_5.jpg' %}" alt="universities" style="height: 200px;" /></div>
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_6.jpg' %}" alt="universities" style="height: 200px;" /></div>
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_7.jpg' %}" alt="universities" style="height: 200px;" /></div>
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_8.jpg' %}" alt="universities" style="height: 200px;" /></div>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="1000">
+              <div class="row h-100 justify-content-center">
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_9.jpg' %}" alt="universities" style="height: 200px;" /></div>
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_10.jpg' %}" alt="universities" style="height: 200px;" /></div>
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_11.jpg' %}" alt="universities" style="height: 200px;" /></div>
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_12.jpg' %}" alt="universities" style="height: 200px;" /></div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row h-100 justify-content-center">
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_13.jpg' %}" alt="universities" style="height: 200px;" /></div>
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_14.jpg' %}" alt="universities" style="height: 200px;" /></div>
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_15.jpg' %}" alt="universities" style="height: 200px;" /></div>
+                <div class="col-sm-6 col-lg-4 col-xl-3 text-xl-start"><img class="mb-4"
+                    src="{% static 'images/fitness_2.jpg' %}" alt="universities" style="height: 200px;" /></div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-5 flex-center">
+            <div class="col-auto position-relative z-index-2">
+              <ol class="carousel-indicators">
+                <li class="active mx-2" data-bs-target="#carouselExampleDark" data-bs-slide-to="0"></li>
+                <li class="mx-2" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></li>
+                <li class="mx-2" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></li>
+                <li class="mx-2" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 mx-auto text-center mb-4">
+        <h5 class="fw-light fs-3 fs-lg-5 lh-sm mb-3">Our Services</h5>
+        <p class="mb-5">We go beyond traditional fitness services, offering a holistic approach to help you achieve
+          lasting results. Discover a personalized fitness experience that caters to your individual needs and empowers
+          you to transform your lifestyle.</p>
+      </div>
+    </div>
+    <div class="row flex-center h-100">
+      <div class="col-xl-9">
+        <div class="row justify-content-center">
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow px-4 px-md-2 px-lg-3 card-span pt-4">
+              <div class="text-center text-md-start card-hover"><img class="ps-3 icons"
+                  src="{% static 'images/our_services_1.jpg' %}" height="200" alt="services" />
+                <div class="card-body">
+                  <h6 class="fw-light fs-1 heading-color">Personalized Workout Programs</h6>
+                  <p class="mt-3 mb-md-0 mb-lg-3">Tailored to your unique fitness level, goals, and preferences, our
+                    fitness coaching website offers personalized workout programs. Whether you're a beginner or an
+                    experienced fitness enthusiast, our coaches design routines that maximize your potential and keep
+                    you motivated.</p><a class="btn btn-lg ps-0 pe-3 text-primary" href="#" role="button">Learn more
+                    <svg class="bi bi-arrow-right-short" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                      fill="currentColor" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z">
+                      </path>
+                    </svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow px-4 px-md-2 px-lg-3 card-span pt-4">
+              <div class="text-center text-md-start card-hover"><img class="ps-3 icons"
+                  src="{% static 'images/our_services_2.jpg' %}" height="200" alt="services" />
+                <div class="card-body">
+                  <h6 class="fw-light fs-1 heading-color">Nutritional Guidance and Planning</h6>
+                  <p class="mt-3 mb-md-0 mb-lg-3">Achieving your fitness goals involves more than just exercise. Our
+                    comprehensive services include expert nutritional guidance to complement your workouts. Learn about
+                    balanced diets, meal planning, and sustainable habits that support your overall well-being.</p><a
+                    class="btn btn-lg ps-0 pe-3 text-primary" href="#" role="button">Learn more
+                    <svg class="bi bi-arrow-right-short" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                      fill="currentColor" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z">
+                      </path>
+                    </svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow px-4 px-md-2 px-lg-3 card-span pt-4">
+              <div class="text-center text-md-start card-hover"><img class="ps-3 icons"
+                  src="{% static 'images/our_services_3.jpg' %}" height="200" alt="services" />
+                <div class="card-body">
+                  <h6 class="fw-light fs-1 heading-color">One-on-One Coaching Sessions</h6>
+                  <p class="mt-3 mb-md-0 mb-lg-3">Experience the benefits of individualized attention with our
+                    one-on-one coaching sessions. Our certified fitness coaches work closely with you, providing
+                    real-time feedback, addressing concerns, and ensuring each session is tailored to your specific
+                    needs, fostering a supportive and motivational environment.</p><a
+                    class="btn btn-lg ps-0 pe-3 text-primary" href="#" role="button">Learn more
+                    <svg class="bi bi-arrow-right-short" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                      fill="currentColor" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z">
+                      </path>
+                    </svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow px-4 px-md-2 px-lg-3 card-span pt-4">
+              <div class="text-center text-md-start card-hover"><img class="ps-3 icons"
+                  src="{% static 'images/our_services_4.jpg' %}" height="200" alt="services" />
+                <div class="card-body">
+                  <h6 class="fw-light fs-1 heading-color">Progress Monitoring and Adjustments</h6>
+                  <p class="mt-3 mb-md-0 mb-lg-3">Your fitness journey is dynamic, and so are our services. We regularly
+                    monitor your progress and make necessary adjustments to your workout and nutrition plans. This
+                    proactive approach ensures that you stay on track, overcome plateaus, and continue progressing
+                    towards your goals.</p>
+                  <a class="btn btn-lg ps-0 pe-3 text-primary" href="#" role="button">Learn more
+                    <svg class="bi bi-arrow-right-short" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                      fill="currentColor" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z">
+                      </path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow px-4 px-md-2 px-lg-3 card-span pt-4">
+              <div class="text-center text-md-start card-hover"><img class="ps-3 icons"
+                  src="{% static 'images/our_services_5.jpg' %}" height="200" alt="services" />
+                <div class="card-body">
+                  <h6 class="fw-light fs-1 heading-color">Community Support and Accountability</h6>
+                  <p class="mt-3 mb-md-0 mb-lg-3">Join a thriving community of like-minded individuals on the same
+                    wellness journey. Our fitness coaching website fosters a sense of community support where you can
+                    connect with others, share experiences, and find motivation. Accountability is a key component of
+                    success, and our platform ensures you have the encouragement needed to stay committed.</p><a
+                    class="btn btn-lg ps-0 pe-3 text-primary" href="#" role="button">Learn more
+                    <svg class="bi bi-arrow-right-short" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                      fill="currentColor" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z">
+                      </path>
+                    </svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="health-tips" class="bg-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 mx-auto text-center my-5">
+        <h5 class="fw-light fs-3 fs-lg-5 lh-sm mb-4">Health Tips</h5>
+        <p class="mb-3">Sunt autem nusquam hoc epicurus in gravissimo bello animadversionis metu degendae praesidia
+          firmissima. Torquatos nostros? quos tu paulo ante cum teneam sententiam, quid bonum esse vult.</p>
+      </div>
+    </div>
+    <div class="row flex-center h-100">
+      <div class="col-xl-9">
+        <div class="row justify-content-center">
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow card-span">
+              <img class="card-img-top" src="{% static 'images/health_1.jpg' %}" alt="Health Tips" height="200" />
+              <div class="card-body">
+                <h6 class="fw-light fs-1 heading-color">Prioritize Consistency Over Intensity</h6>
+                <p class="mb-0 mt-4 fw-light lh-lg">One of the keys to long-term fitness and health success is
+                  consistency. Instead of sporadic, intense workouts, aim for a sustainable routine that you can
+                  maintain over time. Regular exercise, even if it's moderate, has cumulative benefits for both physical
+                  and mental well-being. Consistency builds habits, and habits lead to lasting results.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow card-span">
+              <img class="card-img-top" src="{% static 'images/health_2.jpg' %}" alt="Health Tips" height="200" />
+              <div class="card-body">
+                <h6 class="fw-light fs-1 heading-color">Fuel Your Body with Nutrient-Rich Foods</h6>
+                <p class="mb-0 mt-4 fw-light lh-lg">Nutrition plays a crucial role in overall health and fitness. Focus
+                  on consuming a well-balanced diet rich in whole foods, including fruits, vegetables, lean proteins,
+                  whole grains, and healthy fats. Stay hydrated, and be mindful of portion sizes. Nutrition not only
+                  fuels your workouts but also supports recovery and helps maintain a healthy weight.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow card-span">
+              <img class="card-img-top" src="{% static 'images/health_3.jpg' %}" alt="Health Tips" height="200" />
+              <div class="card-body">
+                <h6 class="fw-light fs-1 heading-color">Prioritize Recovery and Rest</h6>
+                <p class="mb-0 mt-4 fw-light lh-lg">Recovery is an essential, often overlooked, aspect of a fitness
+                  routine. Allow your body time to rest and repair by incorporating rest days into your schedule.
+                  Quality sleep is also crucial for recovery and overall health. It's during rest that your muscles
+                  repair and grow, and your body replenishes energy stores. Listen to your body and prioritize both
+                  active recovery (gentle activities like walking or yoga) and sufficient sleep for optimal well-being.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonial">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 mx-auto text-center my-5">
+        <h5 class="fw-light fs-3 fs-lg-5 lh-sm mb-4">Testimonial</h5>
+        <p class="mb-5">Welcome to our Testimonials section, where the success stories of individuals who have
+          experienced transformative journeys with our fitness coaches come to life. At Fitness Coach, we take pride in
+          helping our clients achieve their health and wellness goals. Here's what they have to say about their
+          experiences:</p>
+      </div>
+    </div>
+    <div class="row flex-center h-100">
+      <div class="col-xl-9">
+        <div class="carousel slide" id="carouselTestimonials" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <div class="row h-100 justify-content-center">
+                <div class="col-md-6 mb-4">
+                  <div class="card h-100 shadow card-span p-3">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center"><img class="img-fluid"
+                          src="{% static 'images/person_1.jpg' %}" alt="testimonials" />
+                        <div class="flex-1 ms-4">
+                          <h6 class="fw-light fs-lg-1 mb-1">Samantha W.</h6>
+                          <p class="fw-normal mb-0 text-800">reporter</p>
+                        </div>
+                      </div>
+                      <p class="mb-0 mt-4 fw-light lh-lg">I can't express how grateful I am for the incredible support
+                        and guidance I received from my fitness coach. Their personalized approach helped me set
+                        realistic goals and stay accountable. With their expertise, I not only achieved my fitness
+                        milestones but also gained a newfound confidence in myself. The results speak for themselves,
+                        and I'm forever thankful!</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="card h-100 shadow card-span p-3">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center"><img class="img-fluid"
+                          src="{% static 'images/person_2.jpg' %}" alt="testimonials" />
+                        <div class="flex-1 ms-4">
+                          <h6 class="fw-light fs-lg-1 mb-1">John R.</h6>
+                          <p class="fw-normal mb-0 text-800">Landscape</p>
+                        </div>
+                      </div>
+                      <p class="mb-0 mt-4 fw-light lh-lg">Working with my fitness coach has been a game-changer. They
+                        didn't just provide a workout routine; they transformed my entire approach to health and
+                        wellness. The encouragement, motivation, and tailored programs made the journey enjoyable. I've
+                        not only seen physical changes but also developed a positive mindset. Highly recommend this
+                        coaching service!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+              <div class="row h-100 justify-content-center">
+                <div class="col-md-6 mb-4">
+                  <div class="card h-100 shadow card-span p-3">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center"><img class="img-fluid"
+                          src="{% static 'images/person_1.jpg' %}" alt="testimonials" />
+                        <div class="flex-1 ms-4">
+                          <h6 class="fw-light fs-lg-1 mb-1">Emily M</h6>
+                          <p class="fw-normal mb-0 text-800">Senior Developer</p>
+                        </div>
+                      </div>
+                      <p class="mb-0 mt-4 fw-light lh-lg">What sets this fitness coach apart is their holistic approach.
+                        From customized workout plans to nutrition guidance, they addressed every aspect of my wellness
+                        journey. The emphasis on overall well-being made a significant impact on my lifestyle. It's more
+                        than just fitness; it's a comprehensive strategy for a healthier, happier life.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="card h-100 shadow card-span p-3">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center"><img class="img-fluid"
+                          src="{% static 'images/person_2.jpg' %}" alt="testimonials" />
+                        <div class="flex-1 ms-4">
+                          <h6 class="fw-light fs-lg-1 mb-1">David Phillips</h6>
+                          <p class="fw-normal mb-0 text-800">reporter</p>
+                        </div>
+                      </div>
+                      <p class="mb-0 mt-4 fw-light lh-lg">I've worked with various fitness coaches, and this one stands
+                        out for being both professional and personable. The coach took the time to understand my goals,
+                        preferences, and limitations. Their expertise was evident in the thoughtful workout routines
+                        designed for my specific needs. The personal connection made the entire experience enjoyable and
+                        effective. Highly recommended!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+              <div class="row h-100 justify-content-center">
+                <div class="col-md-6 mb-4">
+                  <div class="card h-100 shadow card-span p-3">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center"><img class="img-fluid"
+                          src="{% static 'images/person_2.jpg' %}" alt="testimonials" />
+                        <div class="flex-1 ms-4">
+                          <h6 class="fw-light fs-lg-1 mb-1">Ainara Vergara</h6>
+                          <p class="fw-normal mb-0 text-800">Landscape</p>
+                        </div>
+                      </div>
+                      <p class="mb-0 mt-4 fw-light lh-lg">Working with my fitness coach has been an absolute
+                        game-changer. Their expertise, encouragement, and personalized approach have not only helped me
+                        achieve my fitness goals but have also given me a newfound confidence. The tailored workouts and
+                        constant support make every session enjoyable. I'm so grateful for the positive impact on both
+                        my physical and mental well-being!</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="card h-100 shadow card-span p-3">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center"><img class="img-fluid"
+                          src="{% static 'images/person_1.jpg' %}" alt="testimonials" />
+                        <div class="flex-1 ms-4">
+                          <h6 class="fw-light fs-lg-1 mb-1">Niek Bove</h6>
+                          <p class="fw-normal mb-0 text-800">Senior Developer</p>
+                        </div>
+                      </div>
+                      <p class="mb-0 mt-4 fw-light lh-lg">I can't thank my fitness coach enough for guiding me towards
+                        sustainable lifestyle changes. Their holistic approach, combining fitness routines and
+                        nutritional advice, has made a significant difference. Unlike other programs I've tried, this
+                        felt tailored to my needs. The results have been impressive, but more importantly, I feel
+                        healthier and more energetic every day.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row h-100 justify-content-center">
+                <div class="col-md-6 mb-4">
+                  <div class="card h-100 shadow card-span p-3">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center"><img class="img-fluid"
+                          src="{% static 'images/person_1.jpg' %}" alt="testimonials" />
+                        <div class="flex-1 ms-4">
+                          <h6 class="fw-light fs-lg-1 mb-1">Harrison Phillips</h6>
+                          <p class="fw-normal mb-0 text-800">reporter</p>
+                        </div>
+                      </div>
+                      <p class="mb-0 mt-4 fw-light lh-lg">What sets my fitness coach apart is the personal touch they
+                        bring to every session. It's not just about the exercises; it's about understanding my goals, my
+                        challenges, and then providing tailored solutions. The motivation they instill goes beyond the
+                        gym. I never thought I could enjoy working out so much, and the positive changes in my body and
+                        mindset are truly remarkable.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="card h-100 shadow card-span p-3">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center"><img class="img-fluid"
+                          src="{% static 'images/person_2.jpg' %}" alt="testimonials" />
+                        <div class="flex-1 ms-4">
+                          <h6 class="fw-light fs-lg-1 mb-1">Ainara Vergara</h6>
+                          <p class="fw-normal mb-0 text-800">Landscape</p>
+                        </div>
+                      </div>
+                      <p class="mb-0 mt-4 fw-light lh-lg">Results matter, and my fitness coach delivered beyond
+                        expectations. From the initial assessment to the ongoing adjustments in my workout plan,
+                        everything felt customized to my progress. The dedication and expertise they bring to each
+                        session are unmatched. It's not just about getting fit; it's about reaching your personal best.
+                        I highly recommend their coaching for anyone serious about their health and fitness journey.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-5 flex-center">
+            <div class="col-auto position-relative z-index-2">
+              <ol class="carousel-indicators">
+                <li class="active mx-2" data-bs-target="#carouselTestimonials" data-bs-slide-to="0"></li>
+                <li class="mx-2" data-bs-target="#carouselTestimonials" data-bs-slide-to="1"></li>
+                <li class="mx-2" data-bs-target="#carouselTestimonials" data-bs-slide-to="2"></li>
+                <li class="mx-2" data-bs-target="#carouselTestimonials" data-bs-slide-to="3"></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-6 bg-100">
+  <div class="container">
+    <div class="row flex-center">
+      <div class="col-md-7 col-lg-6 offset-xl-1">
+        <h1 class="fw-light text-center text-md-start fs-lg-3 fs-xl-4">Ready to chase your fitness?</h1>
+      </div>
+      <div class="col-md-4 text-center text-lg-end"> <a class="btn btn-lg btn-primary hover-top"
+          href="{% url 'account_signup' %}">Join Now
+          <svg class="bi bi-arrow-right-short ms-2" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+            fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z">
+            </path>
+          </svg></a></div>
+    </div>
+  </div>
+</section>
+{% endblock %}
