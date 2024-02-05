@@ -20,7 +20,7 @@ from pages import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", views.index, name="index"),
+    path('', views.index, name="index"),
     path('accounts/signup/', views.CustomSignupView.as_view(), name='account_signup'),
     path('accounts/', include('allauth.urls')),
     path("dashboard/", views.dashboard, name="dashboard"),

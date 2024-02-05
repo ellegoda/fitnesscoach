@@ -1,10 +1,12 @@
-from django.db.models.functions import TruncWeek, TruncMonth
+from django.db.models.functions import TruncMonth
 from django.shortcuts import render, redirect
 from allauth.account.views import SignupView
 from .forms import CustomSignupForm, ActivityForm
 from .models import DietPlan, ActivityProgram, Activity
 from datetime import datetime, timedelta
 from django.db.models import Sum, F
+from django.contrib.auth.decorators import login_required
+
 
 class CustomSignupView(SignupView):
     form_class = CustomSignupForm
@@ -12,6 +14,9 @@ class CustomSignupView(SignupView):
 
 
 def index(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+
     return render(request, "index.html")
 
 
@@ -50,14 +55,14 @@ def calculate_weekly_calories(user):
         Activity.objects
         .filter(user=user, date__range=[start_date, end_date])
         .annotate(calories_burned=F('duration_minutes') * (
-                    F('activity_type__calories_burn') / F('activity_type__unit_duration_minutes')))
+                F('activity_type__calories_burn') / F('activity_type__unit_duration_minutes')))
     )
 
     # Calculate the total calories burned for the week
     total_calories = weekly_activities.aggregate(Sum('calories_burned'))[
         'calories_burned__sum']
 
-    return round(total_calories) or 0
+    return total_calories or 0
 
 
 def monthly_calories(user):
@@ -87,6 +92,7 @@ def monthly_calories(user):
     return chart_data
 
 
+@login_required(login_url='login')
 def dashboard(request):
     user_bmi = get_user_bmi(request.user)
     user_goal = get_user_goal(request.user)
@@ -103,7 +109,7 @@ def dashboard(request):
         'activity_programs': activity_programs,
         'diet_plans': diet_plans,
         'activity_form': activity_form,
-        'weekly_calories': weekly_calories,
+        'weekly_calories': round(weekly_calories),
         'calories_goal_progress': calories_goal_progress,
         'user_goal': user_goal * 7,
         'monthly_report': monthly_report,
