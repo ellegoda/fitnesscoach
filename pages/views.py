@@ -1,11 +1,10 @@
-from django.db.models.functions import TruncWeek
+from django.db.models.functions import TruncWeek, TruncMonth
 from django.shortcuts import render, redirect
 from allauth.account.views import SignupView
 from .forms import CustomSignupForm, ActivityForm
 from .models import DietPlan, ActivityProgram, Activity
 from datetime import datetime, timedelta
 from django.db.models import Sum, F
-from django.utils import timezone
 
 class CustomSignupView(SignupView):
     form_class = CustomSignupForm
@@ -47,38 +46,37 @@ def calculate_weekly_calories(user):
     end_date = start_date + timedelta(days=6)
 
     # Filter activities for the current week
-    weekly_activities = Activity.objects.filter(user=user, date__range=[start_date, end_date])
+    weekly_activities = (
+        Activity.objects
+        .filter(user=user, date__range=[start_date, end_date])
+        .annotate(calories_burned=F('duration_minutes') * (
+                    F('activity_type__calories_burn') / F('activity_type__unit_duration_minutes')))
+    )
 
     # Calculate the total calories burned for the week
-    total_calories = weekly_activities.aggregate(Sum('activity_type__calories_burn'))[
-        'activity_type__calories_burn__sum']
+    total_calories = weekly_activities.aggregate(Sum('calories_burned'))[
+        'calories_burned__sum']
 
-    return total_calories or 0
+    return round(total_calories) or 0
 
 
 def monthly_calories(user):
-    start_date = timezone.now().replace(month=1, day=1, hour=0, minute=0, second=0, microsecond=0)
-
-    # Get the last day of the current month
-    end_date = start_date.replace(year=start_date.year + 1) - timezone.timedelta(days=1)
-
-    # Filter activities for the current month
-    monthly_activities = Activity.objects.filter(user=user, date__range=[start_date, end_date])
-
-    # Truncate the date to weeks and aggregate the data
-    monthly_report = monthly_activities.annotate(
-        month_start=TruncWeek('date'),
-    ).values('month_start').annotate(
-        total_calories_burned=Sum(
-            F('activity_type__calories_burn') * F('duration_minutes') / F('activity_type__unit_duration_minutes')),
-    ).order_by('month_start')
+    monthly_report = (
+        Activity.objects
+        .filter(user=user)
+        .annotate(month=TruncMonth('date'))
+        .values('month')
+        .annotate(total_calories=Sum(
+            F('duration_minutes') * (F('activity_type__calories_burn') / F('activity_type__unit_duration_minutes'))))
+        .order_by('month')
+    )
 
     # Create data for Chart.js
     chart_data = {
-        'labels': [month['month_start'].strftime('%B') for month in monthly_report],
+        'labels': [month['month'].strftime('%B') for month in monthly_report],
         'datasets': [{
             'label': 'Total Calories Burned',
-            'data': [month['total_calories_burned'] for month in monthly_report],
+            'data': [month['total_calories'] for month in monthly_report],
             'backgroundColor': 'rgba(75, 192, 192, 0.2)',
             'borderColor': 'rgba(75, 192, 192, 1)',
             'borderWidth': 1,
@@ -107,7 +105,7 @@ def dashboard(request):
         'activity_form': activity_form,
         'weekly_calories': weekly_calories,
         'calories_goal_progress': calories_goal_progress,
-        'user_goal': user_goal,
+        'user_goal': user_goal * 7,
         'monthly_report': monthly_report,
     }
 

@@ -1,1 +1,1 @@
-DELETE FROM pages_activity
+UPDATE pages_customuser SET daily_calories_burn_goal = 700
