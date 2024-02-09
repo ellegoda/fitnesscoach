@@ -5,17 +5,15 @@
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'css/theme.css' %}" rel="stylesheet" />
     <title>{% block title %}Fitness Coach{% endblock %}</title>
 </head>
 <body>
-    <main>
-        <div class="m-3">
-            <div class="box w-100">{% block content %}{% endblock %}</div>
-        </div>
+    <main class="main" id="top">
+        {% include 'partials/auth_header.html' %}
+        {% block content %}{% endblock %}
     </main>
 </body>
 </html>

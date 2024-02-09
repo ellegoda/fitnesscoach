@@ -8492,6 +8492,10 @@ fieldset:disabled .btn {
   margin-top: 15rem !important;
 }
 
+.mt-12 {
+  margin-top: 20rem !important;
+}
+
 .mt-auto {
   margin-top: auto !important;
 }
